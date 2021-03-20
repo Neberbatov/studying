@@ -14,4 +14,9 @@ fun main() {
     val nissan = Car (doorCount = 5)        // изменяем значение по умолчанию
     println("${nissan.bodyHeight}  ${nissan.doorCount}")
 
+    //создаем объет через дополнительный конструктор
+    val opel = Car(4,2, Triple(5000.0, 2500.0, 1800.0))
+
+    println("Высота Опеля: ${opel.bodyHeight} мм")
+
 }

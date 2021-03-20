@@ -12,5 +12,7 @@ class Car constructor(
     }
     var currentSpeed:Int = 0
 
-    constructor(wheelCount: Int, doorCount: Int, bodySize: Triple())   // тип Triple содержит три значения
+    //создаем дополнительный конструктор для класса
+    constructor(wheelCount: Int, doorCount: Int, bodySize: Triple<Double, Double, Double>):  // тип Triple содержит три значения
+            this (wheelCount, doorCount, bodySize.first, bodySize.second, bodySize.third)
 }
