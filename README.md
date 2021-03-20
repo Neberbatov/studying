@@ -1,2 +1,2 @@
 # studying
-It's my first project
+It's my studying files of Skillbox
