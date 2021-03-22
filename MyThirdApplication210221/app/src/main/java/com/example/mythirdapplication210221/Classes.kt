@@ -1,6 +1,7 @@
 package com.example.mythirdapplication210221
 
 import com.example.mythirdapplication210221.oop.Car
+import com.example.mythirdapplication210221.Vehicle
 
 fun main() {
     val tesla = Car(
@@ -11,7 +12,7 @@ fun main() {
 //    tesla.currentSpeed = 150
 //    println("Current speed = ${tesla.currentSpeed}")
 
-    val nissan = Car (doorCount = 5)        // изменяем значение по умолчанию
+    val nissan = Car(doorCount = 5)        // изменяем значение по умолчанию
     println("${nissan.bodyHeight}  ${nissan.doorCount}")
 
 
@@ -27,6 +28,8 @@ fun main() {
 //    println(tesla.currentSpeed)
 //    println(tesla.fuelCount)
 
-}
+    }
+
+
 
 
