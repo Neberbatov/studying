@@ -1,8 +1,10 @@
 package com.example.mythirdapplication210221
 
-open class Vehicle {
+open class Vehicle(
+        val maxSpeed: Int
+) {
 
-    var currentSpeed: Int = 0
+            var currentSpeed: Int = 0
         get() {
             println("не надо обращаться к currentSpeed")
             return field        // нельзя return currentSpeed - ибо рекурсия. Работаем через field
@@ -12,10 +14,10 @@ open class Vehicle {
             field = value
         }
 
-    var fuelCount: Int = 50
-        private set
+    var fuelCount: Int = 0
+        protected set
 
-    fun accelerate(speed: Int) {           //добавляем метод в класс
+    open fun accelerate(speed: Int) {           //добавляем метод в класс. Делаем метод открытым для переопределения
         val needFuel = speed / 2
 
         if (fuelCount >= needFuel) {
@@ -26,6 +28,9 @@ open class Vehicle {
         }
     }
 
+    open fun getTitle ():String {
+        return "Vehicle"
+    }
 
     fun decelerate(speed: Int) {
         currentSpeed = maxOf(0, currentSpeed - speed)
@@ -38,5 +43,8 @@ open class Vehicle {
         this.fuelCount
     }
 
+    fun refuel(fuel: Int) {
+        fuelCount += fuel
+    }
 
 }
