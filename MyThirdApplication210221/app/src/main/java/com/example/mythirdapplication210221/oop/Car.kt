@@ -54,5 +54,33 @@ class Car constructor(
         this.fuelCount
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Car
+
+        if (wheelCount != other.wheelCount) return false
+        if (doorCount != other.doorCount) return false
+        if (bodyLength != other.bodyLength) return false
+        if (bodyWidth != other.bodyWidth) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = wheelCount
+        result = 31 * result + doorCount
+        result = 31 * result + bodyLength.hashCode()
+        result = 31 * result + bodyWidth.hashCode()
+        return result
+    }
+
+    //Раскладываем свойства класса (основного конструктора) на компоненты
+    operator fun component1 ():Int = wheelCount
+    operator fun component2 ():Int = doorCount
+    operator fun component3 ():Double = bodyLength
+    operator fun component4 ():Double = bodyWidth
+
 
 }
