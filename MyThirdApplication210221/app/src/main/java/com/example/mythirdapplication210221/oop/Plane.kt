@@ -1,5 +1,6 @@
 package com.example.mythirdapplication210221.oop
 
+import com.example.mythirdapplication210221.User
 import com.example.mythirdapplication210221.Vehicle
 
 //Наследование через двоеточие. После Vehicle пустые скобки, т.к. конструктор пуст
@@ -23,6 +24,11 @@ class Plane(
     fun closeDoor() {
         if (isDoorOpen) {
             println("Door is closed")
+            if (::pilot.isInitialized) {
+                println("Pilot is ready")
+            } else {
+                println("Cabin is empty")
+            }
         }
         isDoorOpen = false
     }
@@ -40,7 +46,8 @@ class Plane(
     fun accelerate(speed: Int, force: Boolean) {
         if (force) {
             if (isDoorOpen) {
-                println("warning! You accelerate with open door")}
+                println("warning! You accelerate with open door")
+            }
             super.accelerate(speed)         //обращаемся к родительскому методу, а не к стр.31
         } else {
             accelerate(speed)
@@ -48,4 +55,23 @@ class Plane(
     }
 
     override fun getTitle(): String = "Plane"
+
+    private lateinit var pilot: User
+
+    fun setPilot(pilot: User) {
+        this.pilot = pilot
+        println("Your pilot today is ${pilot.name} ${pilot.lastName}")
+    }
+
+    fun startFly() {
+        openDoor()
+        closeDoor()
+        if (::pilot.isInitialized) {
+            accelerate(100)
+            println("Текущая скорость $currentSpeed. Полёт нормальный!")
+        } else {
+            println("Мы никуда не полетим без пилота")}
+
+    }
 }
+

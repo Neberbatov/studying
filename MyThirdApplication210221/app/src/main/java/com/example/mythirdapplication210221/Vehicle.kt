@@ -6,11 +6,12 @@ open class Vehicle(
 
             var currentSpeed: Int = 0
         get() {
-            println("не надо обращаться к currentSpeed")
+ //           println("не надо обращаться к currentSpeed")
             return field        // нельзя return currentSpeed - ибо рекурсия. Работаем через field
         }
-        private set(value) {
-            println("не надо изменять currentSpeed")
+                // раньше был private set
+        set(value) {
+           // println("не надо изменять currentSpeed")
             field = value
         }
 

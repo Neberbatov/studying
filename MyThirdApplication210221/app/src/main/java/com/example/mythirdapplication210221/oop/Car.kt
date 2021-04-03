@@ -1,5 +1,8 @@
 package com.example.mythirdapplication210221.oop
 
+import com.example.mythirdapplication210221.User
+import java.sql.Driver
+
 class Car constructor(
         val wheelCount:Int = 4, //значение по умолчанию
         val doorCount: Int = 4,
@@ -81,6 +84,12 @@ class Car constructor(
     operator fun component2 ():Int = doorCount
     operator fun component3 ():Double = bodyLength
     operator fun component4 ():Double = bodyWidth
+
+    private lateinit var driver: User
+
+    fun setDriver (driver: User) {
+        this.driver = driver
+    }
 
 
 }
