@@ -1,10 +1,17 @@
 package com.example.mythirdapplication210221.oop
 
+import com.example.mythirdapplication210221.PrintAreaOnChangeDelegate
+
 class Rectangle(x: Int,
                 y: Int,
-                private val width: Int,
-                private val height: Int
+                width: Int,
+                height: Int
 ) : AbstractShape(x, y), Comparable<Rectangle> {        //реализуем интерфейс Comparable
+
+    var width: Int by PrintAreaOnChangeDelegate (width)
+    var height: Int by PrintAreaOnChangeDelegate (height)
+
+
     override fun calcArea(): Double = width * height.toDouble()
 
     override val name: String = "Rectangle"

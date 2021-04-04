@@ -40,6 +40,8 @@ class Plane(
         } else {
             super.accelerate(speed)
         }
+        //вызываем объект engine, тем самым создавая его (делегированное св-во через lazy)
+        engine.use()
     }
 
     //Перегрузка метода accelerate
@@ -52,6 +54,7 @@ class Plane(
         } else {
             accelerate(speed)
         }
+        engine.use()
     }
 
     override fun getTitle(): String = "Plane"
@@ -70,8 +73,14 @@ class Plane(
             accelerate(100)
             println("Текущая скорость $currentSpeed. Полёт нормальный!")
         } else {
-            println("Мы никуда не полетим без пилота")}
+            println("Мы никуда не полетим без пилота")
+        }
 
+    }
+
+    //Добавляем свойство с отложенной инициализацией - объект будет создан только при обращении к нему
+    private val engine by lazy {
+        Engine()
     }
 }
 
