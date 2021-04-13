@@ -82,5 +82,13 @@ class Plane(
     private val engine by lazy {
         Engine()
     }
+
+    companion object {
+        val default = Plane(2, 2, 1100)
+
+        fun createWithDefaultWingCount (doorCount: Int, maxSpeed: Int): Plane {
+            return Plane(wingCount=2, doorCount = doorCount, maxSpeed = maxSpeed)
+        }
+    }
 }
 
