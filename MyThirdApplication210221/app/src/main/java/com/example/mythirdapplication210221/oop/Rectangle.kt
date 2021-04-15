@@ -8,8 +8,8 @@ class Rectangle(x: Int,
                 height: Int
 ) : AbstractShape(x, y), Comparable<Rectangle> {        //реализуем интерфейс Comparable
 
-    var width: Int by PrintAreaOnChangeDelegate (width)
-    var height: Int by PrintAreaOnChangeDelegate (height)
+    var width: Int by PrintAreaOnChangeDelegate(width)
+    var height: Int by PrintAreaOnChangeDelegate(height)
 
 
     override fun calcArea(): Double = width * height.toDouble()
@@ -26,7 +26,13 @@ class Rectangle(x: Int,
         return "Rectangle (width = $width, height = $height)"
     }
 
+    //Сделаем перегрузку операторов. Список операторов можно получить через Ctrl + Space
+    // используем other для указания на передаваемый внутрь объект
+    operator fun plus(other: Rectangle): Rectangle {
+        return Rectangle(x = 0, y = 0, width = width + other.width, height = height + other.height)
+    }
 
-
-
+    operator fun unaryMinus(): Rectangle {
+        return Rectangle(0,0, width=-width, height = -height)
+    }
 }
