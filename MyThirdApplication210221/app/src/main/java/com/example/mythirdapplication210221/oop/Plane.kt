@@ -13,9 +13,11 @@ class Plane(
     var isDoorOpen: Boolean = false
         private set
 
-    fun openDoor() {
+    // добавим функцию высшего порядка (openCallBack). После "=" - действие по умолчанию
+    fun openDoor(openCallBack: () -> Unit = { println("Door is opened") }) {
         if (!isDoorOpen) {
-            println("Door is opened")
+            openCallBack()
+//            println("Door is opened")
         }
         isDoorOpen = true
 
@@ -86,8 +88,8 @@ class Plane(
     companion object {
         val default = Plane(2, 2, 1100)
 
-        fun createWithDefaultWingCount (doorCount: Int, maxSpeed: Int): Plane {
-            return Plane(wingCount=2, doorCount = doorCount, maxSpeed = maxSpeed)
+        fun createWithDefaultWingCount(doorCount: Int, maxSpeed: Int): Plane {
+            return Plane(wingCount = 2, doorCount = doorCount, maxSpeed = maxSpeed)
         }
     }
 }
