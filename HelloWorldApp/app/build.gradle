@@ -1,0 +1,93 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.example.myhelloworldapp"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        //Добавим 2 билд-тайпа - QA и debug.
+        debug {
+            applicationIdSuffix ".debug"
+            manifestPlaceholders = [appName: "DebugHello"]
+        }
+
+        qa {
+            initWith debug //QA наследуем от дебага
+            manifestPlaceholders = [appName: "QaHello"]
+            applicationIdSuffix ".qa"
+        }
+
+        release {
+            manifestPlaceholders = [appName: "ReleaseHello"]
+            applicationIdSuffix ".release"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //Добавим строку проверки подписи приложения
+            signingConfig signingConfigs.debug
+
+        }
+    }
+
+    //Добавим flavor'ы
+    flavorDimensions "type", "brand"
+
+    productFlavors {
+        demo {
+            applicationIdSuffix ".demo"
+            versionNameSuffix "Demo"
+            dimension "type"
+        }
+        full {
+            applicationIdSuffix ".full"
+            versionNameSuffix "Full"
+            dimension "type"
+        }
+        cola {
+            versionCode = android.defaultConfig.versionCode + 100
+            applicationIdSuffix ".cola"
+            versionNameSuffix "Cola"
+            dimension "brand"
+        }
+        pepsi {
+            minSdkVersion 23
+            applicationIdSuffix ".pepsi"
+            versionNameSuffix "Pepsi"
+            dimension "brand"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
