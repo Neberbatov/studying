@@ -5,9 +5,9 @@ import com.example.mythirdapplication210221.Vehicle
 
 //Наследование через двоеточие. После Vehicle пустые скобки, т.к. конструктор пуст
 class Plane(
-        val wingCount: Int,
-        val doorCount: Int,
-        maxSpeed: Int              // свойство maxSpeed есть у класса-родителя. Мы его обозначаем тут и передаем на вход конструктору при наследовании
+    val wingCount: Int,
+    val doorCount: Int,
+    maxSpeed: Int              // свойство maxSpeed есть у класса-родителя. Мы его обозначаем тут и передаем на вход конструктору при наследовании
 ) : Vehicle(maxSpeed) {
 
     var isDoorOpen: Boolean = false
