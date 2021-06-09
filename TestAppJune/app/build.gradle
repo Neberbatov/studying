@@ -39,6 +39,7 @@ android {
         full {
             applicationIdSuffix ".full"
             dimension "type"
+            minSdkVersion 23
         }
 
         trial {

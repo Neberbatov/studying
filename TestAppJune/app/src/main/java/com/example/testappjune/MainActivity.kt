@@ -9,7 +9,8 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.full_layout)
+//        setContentView(R.layout.activity_main)
 
         val textView = findViewById<TextView>(R.id.textView1)
         textView.text = """

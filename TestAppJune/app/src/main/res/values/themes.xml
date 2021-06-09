@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/colorBackground</item>
 <!--        <item name="android:windowBackground">@android:color/holo_blue_bright</item>-->
-        <item name="android:textColor">@android:color/holo_orange_light</item>
+        <item name="android:textColor">@android:color/black</item>
 
     </style>
 </resources>
